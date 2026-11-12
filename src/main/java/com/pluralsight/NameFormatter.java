@@ -10,13 +10,13 @@ public class NameFormatter {
     public static String format(String prefix, String firstName, String middleName, String lastName, String suffix) {
         StringBuilder container = new StringBuilder();
         container.append(lastName).append(",");
-        if (!prefix.isBlank())
+        if (prefix != null && !prefix.isBlank())
             container.append(" ").append(prefix);
-        if (!firstName.isBlank())
+        if (firstName != null && !firstName.isBlank())
             container.append(" ").append(firstName);
-        if (!middleName.isBlank())
+        if (middleName != null && !middleName.isBlank())
             container.append(" ").append(middleName);
-        if (!suffix.isBlank())
+        if (suffix != null && !suffix.isBlank())
             container.append(", ").append(suffix);
         return container.toString().trim();
     }
