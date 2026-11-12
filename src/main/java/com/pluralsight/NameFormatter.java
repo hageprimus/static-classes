@@ -3,9 +3,6 @@ package com.pluralsight;
 public class NameFormatter {
     private NameFormatter(){}
 
-    //This is not exhaustive obviously
-    private static final String[] SUFFIX_LIST = {"Jr.", "Sr.", "M.D.", "PhD", "II", "III", "IV"};
-
     public static String format(String firstName, String lastName) {
         return lastName + ", " + firstName;
     }
@@ -39,18 +36,15 @@ public class NameFormatter {
         //Get first name (shift index forward one if there's a prefix)
         firstName = nameArray[hasPrefix].trim();
 
-        //Check if our last index matches anything in our suffix list
+        //If the second to last string contains a comma, assume the last one is a suffix
         int hasSuffix = 0;
-        for (String s : SUFFIX_LIST) {
-            if (nameArray[nameArray.length-1].equalsIgnoreCase(s)) {
-                suffix = s.trim();
-                hasSuffix++;
-                break;
-            }
+        if (nameArray[nameArray.length-2].contains(",")) {
+            suffix = nameArray[nameArray.length-1];
+            lastName = nameArray[nameArray.length-2].replace(",","");
+            hasSuffix++;
+        } else {
+            lastName = nameArray[nameArray.length-1];
         }
-
-        //Get the last name (we're assuming everyone has a first and last name, obviously)
-        lastName = nameArray[nameArray.length - (1+hasSuffix)].trim();
 
         //Check if there's any remaining indexes in the array, and treat them all as a middle name
         //Accounts for if someone inputs a name with multiple middle names

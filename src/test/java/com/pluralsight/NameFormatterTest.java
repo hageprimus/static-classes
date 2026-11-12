@@ -34,7 +34,7 @@ class NameFormatterTest {
         String fullName1 = "Hage Primus";
         String expected1 = "Primus, Hage";
 
-        String fullName2 = "Mr. Hage Vincent Richard Primus PhD";
+        String fullName2 = "Mr. Hage Vincent Richard Primus, PhD";
         String expected2 = "Primus, Mr. Hage Vincent Richard, PhD";
 
         String fullName3 = "Mr. Hage Vincent Primus";
